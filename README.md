@@ -40,9 +40,9 @@ This section should list any major frameworks that you built your project using.
 <!-- How to play-->
 
 ## How to play
-1.Select one of the difficulty level you want.
-1.After selecting the level the game gets started and in the screen there is shower of randomly arranged alphabets words, the user have to type down the words before it goes off the screen.
-1.Whenever a word touch the ground, game is over. And your score will be displayed at the end. (images available below)
+1.Select one of the difficulty level you want.<br>
+2.After selecting the level the game gets started and in the screen there is shower of randomly arranged alphabets words, the user have to type down the words before it goes off the screen.<br>
+3.Whenever a word touch the ground, game is over. And your score will be displayed at the end. (images available below)<br>
    
 
 <!-- Images -->
