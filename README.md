@@ -19,7 +19,7 @@
      
 </details>
 
-
+![](./logo.png)
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
