@@ -12,7 +12,7 @@
       </ul>
     </li>
     <li> 
-      <a href="#How to play">How to play</a>
+      <a href="#How To Play">How To Play</a>
     </li>
     <li> 
       <a href="#Images">Images</a>
@@ -38,7 +38,7 @@ This section should list any major frameworks that you built your project using.
 
 
 <!-- How to play -->
-## How to play
+## How To Play
 1.Select one of the difficulty level you want.<br><br>
 2.After selecting the level the game gets started and in the screen there is a shower of randomly arranged alphabetic words, the user have to type down the words before it goes off the screen.<br><br>
 3.Whenever a word touch the ground, game is over. And your score will be displayed at the end. (images available below)<br>
