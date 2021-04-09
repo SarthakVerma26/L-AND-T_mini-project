@@ -11,6 +11,10 @@
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
+    <li> 
+      <a href="#Images">Images</a>
+    </li> 
+      
   
      
 </details>
@@ -26,6 +30,12 @@ TypingGame, as its name reveals, is a game designed to improve one's typing skil
 This section should list any major frameworks that you built your project using. 
 * [C Language](https://www.geeksforgeeks.org/c-language-set-1-introduction/)
 * [VS Code](https://code.visualstudio.com/)
+
+<!-- Images -->
+## Images
+![](./images/1.png)  
+![](./images/2.png)  
+![](./images/3.png) 
 
 
 
