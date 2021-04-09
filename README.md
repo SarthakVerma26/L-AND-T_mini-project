@@ -33,9 +33,9 @@ This section should list any major frameworks that you built your project using.
 
 <!-- Images -->
 ## Images
-![](./images/1.png)  
-![](./images/2.png)  
-![](./images/3.png) 
+![](./img/1.png)  
+![](./img/2.png)  
+![](./img/3.png) 
 
 
 
