@@ -58,6 +58,13 @@ Folder             | Description
 `4_Test_plan`      | Documents with test plans and procedures
 
 
+## Challenges Faced and How Was It Overcome
+
+1. ABC
+2. BCD
+3. ...
+4. ...
+
 
 
 
