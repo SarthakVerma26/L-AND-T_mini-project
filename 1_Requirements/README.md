@@ -1,7 +1,7 @@
 # Requirements
 ## Introduction
- * 
- * This topic was chosen because it gives me an opportunity to implement efficient data structures and provides me flexibilty to understand multiple C programming concepts.
+ * TypingGame, as its name reveals, is a game designed to improve one's typing skills, with randomly-generated words to be exactly typed. When playing, one will accompanied by the melody from Croatian Rhapsody. As a project assigned in the C Language for StepIn Program, it is an individual project for non-comercial purposes. This system allows you to enjoy the funny typing game, as well as to improve your typing speed and correct ratio.
+ * This topic was chosen because it gives me an opportunity to implement and understand multiple C programming concepts.
  
 ## SWOT ANALYSIS
 ![SWOT Analysis](https://github.com/SarthakVerma26/L-AND-T_mini-project/blob/main/1_Requirements/SWOT.png)
