@@ -13,10 +13,10 @@
 * This project started on  first week of April 2021 and will be completed by third week of April 2021. 
 
 ## Where:
-* This project was started and completed in Uttarakhand, India. 
+* This project was started  in Uttarakhand, India. 
 
 ## How:
-* This problem may cause ineffective vaccine management and hence there can be a huge amount of vaccine wastage. As per recent data in cities like Noida and Delhi till date 9%-18% vaccines have gone to waste.
+* I like the word games so then I decided to make one using my skills in C language.
 
 # Detail requirements
 ## High Level Requirements: 
