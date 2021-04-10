@@ -4,16 +4,16 @@
 # 4W&#39;s and 1&#39;H
 
 ## Who:
-* Small and medium size clinics Providing Covid vaccinations to patients
+* Users who want to boost up there typing speed and likes word games.
 
 ## What:
-* Many Clinics are not able to afford high end HMS or ERP systems and hence still depend on manual filing systems. During COVID vaccinations it becomes a tedious task to manage every patient with hand written file system
+* Its a game which throw the randomly arranged words and we have to type down the words before it goes off the screen. It uses the different concepts of C language as well as a bit of graphics.
 
 ## When:
-* This problem began in February 2021, when COVID Vaccination Drive began and small/medium clinics will soon have to administer vaccinations to people.
+* This project started on  first week of April 2021 and will be completed by third week of April 2021. 
 
 ## Where:
-* This problem is expected to surface in all states of India.
+* This project was started and completed in Uttarakhand, India. 
 
 ## How:
 * This problem may cause ineffective vaccine management and hence there can be a huge amount of vaccine wastage. As per recent data in cities like Noida and Delhi till date 9%-18% vaccines have gone to waste.
