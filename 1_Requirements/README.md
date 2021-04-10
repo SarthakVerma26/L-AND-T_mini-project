@@ -35,14 +35,10 @@
 ## High Level Requirements: 
 | ID | Description | Category | Status | 
 | ----- | ----- | ------- | ---------|
-| HR01 | User shall be able to add new patient record | Techincal | TBD-S1 | 
-| HR02 | User shall be able to read a patient record | Techincal | TBD-S1 |
-| HR03 | User shall be able to update a patient record | Techincal | TBD-S1 |
-| HR04 | User shall be able to delete a patient record | Techincal | TBD-S1 |
-| HR05 | User shall be able to save records in a file | Techincal | TBD-S1 |
-| HR06 | User shall be able to read data from a file | Techincal | TBD-S1 |
-| HR07 | Data should not be lost in case of faliure | Scenario | FUTURE |
-| HR08 | Data should always be stored when closing the system | Scenario | TBD-S1 |
+| HR01 | User shall be able to restart the game again if lost | Techincal | TBD-S1 | 
+| HR02 | User shall be able to read there score after a user lost the game  | Techincal | TBD-S1 |
+| HR03 | User shall be able to select the difficulty level at the beginning of the game | Techincal | TBD-S1 |
+
 ##  Low level Requirements:
  
 | ID | Description | HLR ID | Status (Implemented/Future) |
