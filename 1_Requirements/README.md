@@ -1,3 +1,8 @@
+# Requirements
+## Introduction
+ * 
+ * This topic was chosen because it gives me an opportunity to implement efficient data structures and provides me flexibilty to understand multiple C programming concepts.
+ 
 ## SWOT ANALYSIS
 ![SWOT Analysis](https://github.com/SarthakVerma26/L-AND-T_mini-project/blob/main/1_Requirements/SWOT.png)
 
@@ -16,7 +21,7 @@
 * This project was started  in Uttarakhand, India. 
 
 ## How:
-* I like the word games so then I decided to make one using my skills in C language.
+* I have interest in word games so then I decided to make one using my skills in C language.
 
 # Detail requirements
 ## High Level Requirements: 
