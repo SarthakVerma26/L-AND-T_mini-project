@@ -35,9 +35,9 @@
 ## High Level Requirements: 
 | ID | Description | Category | Status | 
 | ----- | ----- | ------- | ---------|
-| HR01 | User shall be able to restart the game again if lost | Techincal | Completed | 
-| HR02 | User shall be able to read there score after a user lost the game  | Techincal | Completed |
-| HR03 | User shall be able to select the difficulty level at the beginning of the game | Techincal | Completed |
+| HR01 | User shall be able to restart the game again if lost | Techincal | Implemented | 
+| HR02 | User shall be able to read there score after a user lost the game  | Techincal | Implemented |
+| HR03 | User shall be able to select the difficulty level at the beginning of the game | Techincal | Implemented |
 | HR04 | User shall be able to enter his or her full name | Techincal | Future |
 | HR05 | User shall be able to see his/her entire scorecard of all the chances | Techincal | Future |
 
@@ -45,12 +45,7 @@
  
 | ID | Description | HLR ID | Status (Implemented/Future) |
 | ------ | --------- | ------ | ----- |
-| LR01 | New record shall be added by providing all the asked information and the id should be unique or else patient record should not be accepted. | HR01 | TBD-S1 |
-| LR02 | Reading patient data should be possible in 2 ways, first being by searching by id of a patient and second by printing all the records available | HR02 | TBD-S1 |
-| LR03 | While reading all the records, only 10 records per page should be visible and should add 10 more if user wants to see more | HR02 | FUTURE |
-| LR04 | If user searches for an invalid ID "No Record Found" message should be displayed | HR02 | TBD-S1 |
-| LR05 | User need to search by id for the pateint record to be updated, if no such record is available then "No Record Found" Message should be displayed | HR03 | TBD-S1 |
-| LR06 | User need to search by id for the pateint record to be deleted, if no such record is available then "No Record Found" Message should be displayed | HR04 | TBD-S1 |
-| LR05 | User shall be able to save the files, if file already exists then it should append to file and should not overwrite it and if file does not exists then it should create a new file | HR05 | TBD-S1 |
-| LR06 | If opening the file fails, then the system shloud prompt the message "Unable to access file" and should not end the program execution | HR05, HR06, HR07, HR08 | TBD-S1 |
-| LR07 | When user Log off the system, message shall be prompted asking the user to save new records to file before exiting or not | HR08 | TBD-S1 |
+| LR01 | New game or restarting the game can only done if the user lost. User  cannot start new game in between of the game. | HR01 | Implemented|
+| LR02 | Reading scorecard should be possible in 2 ways, first is when the user is playing his chance and second when the user completely lost the game. | HR02 | Implemented |
+| LR03 | If user selects an invalid difficulty level then "Invalid Input" message should be displayed | HR03 | Implemented |
+
