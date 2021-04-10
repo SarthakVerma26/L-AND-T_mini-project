@@ -6,11 +6,10 @@
 ## Explanation:
 * Typing Game have few features like:
     * Count the number of words the user typed.
+    * Count the numbers of letters typed as well.
     * Calculate the speed at which rate the user type words per minute.
     * The alphabets are arranged in a randomly manner to form a word.
-    * Update a patient record
-    * Save record to file
-    * Read record from file 
+    
  
 ## SWOT ANALYSIS
 ![SWOT Analysis](https://github.com/SarthakVerma26/L-AND-T_mini-project/blob/main/1_Requirements/SWOT.png)
