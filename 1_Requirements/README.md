@@ -35,9 +35,11 @@
 ## High Level Requirements: 
 | ID | Description | Category | Status | 
 | ----- | ----- | ------- | ---------|
-| HR01 | User shall be able to restart the game again if lost | Techincal | TBD-S1 | 
-| HR02 | User shall be able to read there score after a user lost the game  | Techincal | TBD-S1 |
-| HR03 | User shall be able to select the difficulty level at the beginning of the game | Techincal | TBD-S1 |
+| HR01 | User shall be able to restart the game again if lost | Techincal | Completed | 
+| HR02 | User shall be able to read there score after a user lost the game  | Techincal | Completed |
+| HR03 | User shall be able to select the difficulty level at the beginning of the game | Techincal | Completed |
+| HR04 | User shall be able to enter his or her full name | Techincal | Future |
+| HR05 | User shall be able to see his/her entire scorecard of all the chances | Techincal | Future |
 
 ##  Low level Requirements:
  
