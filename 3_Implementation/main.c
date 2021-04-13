@@ -64,7 +64,7 @@ void init()
 {
 	int n=2;
 	
-	char *s1="Welcome to JZF's hitword game~";
+	char *s1="Welcome ";
 	char *s2="Please select the difficulty of the hitword game...";
 	char *s3="1 for Difficult";
 	char *s4="2 for Normal";
