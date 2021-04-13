@@ -1,3 +1,5 @@
+#include "graphics.h"
+
 void wordclear(int i)    
 {
 	int j=0;
