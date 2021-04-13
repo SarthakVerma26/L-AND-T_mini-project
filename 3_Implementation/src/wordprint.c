@@ -1,3 +1,5 @@
+#include "graphics.h"
+
 void wordprint(char* s,int x,int y)   
 { 
 	char *p;
