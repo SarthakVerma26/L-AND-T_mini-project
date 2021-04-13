@@ -1,4 +1,6 @@
 
+#include "graphics.h"
+
 void numberprint(int n,int x,int y)    
 {
 	char* p;
