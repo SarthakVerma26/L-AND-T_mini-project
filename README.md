@@ -45,9 +45,9 @@ This section should list any major frameworks that you built your project using.
 
 <!-- Images -->
 ## Images
-![](./images/img1.png)  
-![](./images/img2.png)  
-![](./images/img3.png) 
+![](./4_images/img1.png)  
+![](./4_images/img2.png)  
+![](./4_images/img3.png) 
 
 ## Folder Structure
 Folder             | Description
