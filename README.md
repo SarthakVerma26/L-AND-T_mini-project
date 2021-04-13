@@ -26,7 +26,9 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-![](./logo.png)
+<p align="center">
+  <img src="https://github.com/SarthakVerma26/L-AND-T_mini-project/blob/main/4_images/logo.png">
+</p>
 <br>
 TypingGame, as its name reveals, is a game designed to improve one's typing skills, with randomly-generated words to be exactly typed. When playing, one will accompanied by the melody from Croatian Rhapsody. As a project assigned in the C Language for StepIn Program, it is an individual project for non-comercial purposes. This system allows you to enjoy the funny typing game, as well as to improve your typing speed and correct ratio.
 
@@ -46,13 +48,13 @@ This section should list any major frameworks that you built your project using.
 <!-- Images -->
 ## Images
 <p align="center">
-  <img src="https://github.com/SarthakVerma26/L-AND-T_mini-project/blob/main/2_Architecture/use%20case.png">
+  <img src="https://github.com/SarthakVerma26/L-AND-T_mini-project/blob/main/4_images/img1.png">
 </p>
 <p align="center">
-  <img src="https://github.com/SarthakVerma26/L-AND-T_mini-project/blob/main/2_Architecture/use%20case.png">
+  <img src="https://github.com/SarthakVerma26/L-AND-T_mini-project/blob/main/4_images/img2.png">
 </p>
 <p align="center">
-  <img src="https://github.com/SarthakVerma26/L-AND-T_mini-project/blob/main/2_Architecture/use%20case.png">
+  <img src="https://github.com/SarthakVerma26/L-AND-T_mini-project/blob/main/4_images/img3.png">
 </p>
 
 
