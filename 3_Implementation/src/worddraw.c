@@ -1,3 +1,5 @@
+#include "graphics.h"
+
 void worddraw(int i)    
 {
 	int j=0;
