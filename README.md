@@ -45,9 +45,16 @@ This section should list any major frameworks that you built your project using.
 
 <!-- Images -->
 ## Images
-![](./4_images/img1.png)  
-![](./4_images/img2.png)  
-![](./4_images/img3.png) 
+<p align="center">
+  <img src="https://github.com/SarthakVerma26/L-AND-T_mini-project/blob/main/2_Architecture/use%20case.png">
+</p>
+<p align="center">
+  <img src="https://github.com/SarthakVerma26/L-AND-T_mini-project/blob/main/2_Architecture/use%20case.png">
+</p>
+<p align="center">
+  <img src="https://github.com/SarthakVerma26/L-AND-T_mini-project/blob/main/2_Architecture/use%20case.png">
+</p>
+
 
 ## Folder Structure
 Folder             | Description
