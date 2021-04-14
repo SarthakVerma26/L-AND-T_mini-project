@@ -47,12 +47,6 @@ Folder             | Description
 `4_Images`         | All the images useful to understand the project
 
 
-## Challenges Faced and How Was It Overcome
-
-1. ABC
-2. BCD
-3. ...
-4. ...
 
 
 
