@@ -1,7 +1,5 @@
 
-/*
-  A game made for the mini project.
-*/
+
 
 #include <stdio.h>
 #include <string.h>
