@@ -50,12 +50,7 @@ This section should list any major frameworks that you built your project using.
 <p align="center">
   <img src="https://github.com/SarthakVerma26/L-AND-T_mini-project/blob/main/4_images/img1.png">
 </p>
-<p align="center">
-  <img src="https://github.com/SarthakVerma26/L-AND-T_mini-project/blob/main/4_images/img2.png">
-</p>
-<p align="center">
-  <img src="https://github.com/SarthakVerma26/L-AND-T_mini-project/blob/main/4_images/img3.png">
-</p>
+
 
 
 ## Folder Structure
@@ -64,7 +59,7 @@ Folder             | Description
 `1_Requirements`   | Documents detailing requirements and research
 `2_Design`         | Documents specifying design details
 `3_Implementation` | All code and documentation
-`4_Test_plan`      | Documents with test plans and procedures
+`4_Images`         | All the images useful to understand the project
 
 
 ## Challenges Faced and How Was It Overcome
