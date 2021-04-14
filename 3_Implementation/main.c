@@ -1,289 +1,416 @@
-
-
-
 #include <stdio.h>
-#include <string.h>
+#include <graphics.h>
 #include <stdlib.h>
 #include <time.h>
-#include "config.h"
+#include <string.h>
 
+#define wordlength 10
+#define stop 0
 
-int i,
-	lives_left = MAX_LIVES,
-	start_time = 0,
-	end_time = 0,
-	total_score = 0;
+MIDI *pmidi;
+time_t t0;
+time_t t1,t2;
+time_t t3,t4;
+int seed=0;
+int fail=0;
+int frequency;
+int letters=0;
+int words=0;
+double rate=0;
 
-FILE *fptr = NULL;
-
-void display_ascii(FILE *fptr)
+struct     
 {
-    char read_string[MAX_LEN];
-    while(fgets(read_string, sizeof(read_string), fptr) != NULL)
-        printf("%s", read_string);
+	int x;
+	int y;
+	int length;
+	char *s;
+	int  correct;
+}wordlib[17];
+
+void init();
+void wall();
+void midopen();
+void game();
+void initword();
+void fresh();
+void stat();
+void read(int read);
+void draw();
+void worddraw(int i);
+void wordclear(int i);
+char* wordproduce();
+int xproduce();
+int yconverter(int y);
+void information();
+void wordprint(char *s,int x,int y);
+void numberprint(int n,int x,int y);
+void score();
+void gameover();
+void close();
+void esc();
+
+int main(int argc, char *argv[])    
+{
+	int i;
+	init();
+	wall();
+	midopen();
+	game();
+	gameover();
+	return 0;
+}
+
+void init()    
+{
+	int n=2;
+	
+	char *s1="Welcome ";
+	char *s2="Please select the difficulty of the hitword game...";
+	char *s3="1 for Difficult";
+	char *s4="2 for Normal";
+	char *s5="3 for Easy";
+	char *s6="Invalid input!Difficulty will be default.";
+
+	clrscr();
+	wordprint(s1,24,8);
+	wordprint(s2,18,11);
+	wordprint(s3,30,13);
+	wordprint(s4,30,14);
+	wordprint(s5,30,15);
+
+	gotoxy(32,17);
+	scanf("%d",&n);
+	switch(n)
+		{
+		case 1:frequency=500;break;
+		case 2:frequency=1000;break;
+		case 3:frequency=2000;break;
+		default:
+			wordprint(s6,18,19);
+		    frequency=1000;
+		    delay(2000);
+		}
+	clrscr();
 }
 
 
-//Function for time delay
-void delay(unsigned int mseconds) {
-    clock_t goal=mseconds+clock();
-    while (goal>clock());
+void wall()    
+{
+	int i;
+	char *p;
+	for(i=5;i<=75;i++){
+		p=_vp+(2*_width+i)*2;
+		*p='*';
+		*(p+1)=15;
+        p=_vp+(20*_width+i)*2;
+		*p='*';
+		*(p+1)=15;
+	}
+	for(i=3;i<=19;i++){
+		p=_vp+(i*_width+5)*2;
+		*p='��';
+		*(p+1)=15;
+        p=_vp+(i*_width+60)*2;
+		*p='��';
+		*(p+1)=15;
+		 p=_vp+(i*_width+75)*2;
+		*p='��';
+		*(p+1)=15;
+	}
+
 }
 
+void midopen()    
+{
+   initsound();
+   pmidi=load_midi("1.mid");
+   play_midi(pmidi, 20); 
 
-void typespeed_logo() {
-     printf("      %c%c%c%c%c%c%c %c    %c %c%c%c%c%c %c%c%c%c%c%c",176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176);
-     printf("     %c%c%c%c%c%c %c%c%c%c%c %c%c%c%c%c%c %c%c%c%c%c%c %c%c%c%c%c%c%c   \n",176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176);
-     printf("         %c     %c  %c  %c   %c %c%c",176,176,176,176,176,176,176);
-     printf("         %c      %c   %c %c%c     %c%c      %c    %c%c  \n",176,176,176,176,176,176,176,176,176,176);
-     printf("         %c      %c%c   %c%c%c%c%c %c%c%c%c%c",176,176,176,176,176,176,176,176,176,176,176,176,176);
-     printf("      %c%c%c%c%c%c %c%c%c%c%c %c%c%c%c%c  %c%c%c%c%c   %c     %c%c  \n",176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176);
-     printf("         %c      %c%c   %c     %c%c",176,176,176,176,176,176);
-     printf("              %c %c     %c%c     %c%c      %c    %c%c  \n",176,176,176,176,176,176,176,176,176);
-     printf("         %c      %c%c   %c     %c%c%c%c%c%c",176,176,176,176,176,176,176,176,176,176);
-     printf("     %c%c%c%c%c%c %c     %c%c%c%c%c%c %c%c%c%c%c%c %c%c%c%c%c%c%c   \n",176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176);
 }
 
-
-void type_logo() {
-    printf("\t\t         %c%c%c%c%c%c%c %c    %c %c%c%c%c%c %c%c%c%c%c%c \n",176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176);
-    printf("\t\t            %c     %c  %c  %c   %c %c%c       \n",176,176,176,176,176,176,176);
-    printf("\t\t            %c      %c%c   %c%c%c%c%c %c%c%c%c%c     \n",176,176,176,176,176,176,176,176,176,176,176,176,176);
-    printf("\t\t            %c      %c%c   %c     %c%c       \n",176,176,176,176,176,176);
-    printf("\t\t            %c      %c%c   %c     %c%c%c%c%c%c\n",176,176,176,176,176,176,176,176,176,176);
+void game()    
+{
+	int i;
+	initword();
+	t0=t1=t3=clock();
+	t3=clock();
+	while(!stop)
+	{
+		t2=t4=clock();
+		fresh();
+		stat();
+		
+		if(fail==1)
+			break;
+		if (bioskey(1))
+			read(bioskey(0));
+		draw();
+		information();
+	}
+	if(fail==1)
+		gameover();
 }
 
-
-void speed_logo() {
-    printf("\t\t      %c%c%c%c%c%c %c%c%c%c%c %c%c%c%c%c%c %c%c%c%c%c%c %c%c%c%c%c%c%c   \n",176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176);
-    printf("\t\t      %c      %c   %c %c%c     %c%c      %c    %c%c  \n",176,176,176,176,176,176,176,176,176,176);
-    printf("\t\t      %c%c%c%c%c%c %c%c%c%c%c %c%c%c%c%c  %c%c%c%c%c   %c     %c%c  \n",176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176);
-    printf("\t\t           %c %c     %c%c     %c%c      %c    %c%c  \n",176,176,176,176,176,176,176,176,176);
-    printf("\t\t      %c%c%c%c%c%c %c     %c%c%c%c%c%c %c%c%c%c%c%c %c%c%c%c%c%c%c   \n",176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176,176);
+void fresh()    
+{
+	int i;
+	if(difftime(t2,t1)>frequency)
+	{
+		t1=t2;
+		for(i=0;i<17;i++)
+			{
+			if(yconverter(wordlib[i].y)==0)
+				{
+				fail=1;
+				break;
+				}
+			if(yconverter(wordlib[i].y)>0)
+				wordclear(i);
+			wordlib[i].y++;
+			}
+	}
 }
 
-
-void loading_screen() {
-    int k;
-    printf(" \t\t\t\t%c%c%c%c%c%c%c%c%c%c%c%c%c",177,177,177,177,177,177,177,177,177,177,177,177,177);
-    printf("\b\b\b\b\b\b\b\b\b\b\b\b\b");
-    for(k = 1; k <= 13; k++) {
-        if (k <= 3) {
-            delay(250);
-            printf("\xdb");
-        }
-        else if(k > 3 && k <= 6) {
-            delay(150);
-            printf("\xdb");
-        }
-        else if(k > 6) {
-            delay(100);
-            printf("\xdb");
-            delay(12);
-        }
-    }
-}
-
-
-void start_screen() {
-    int i, j;
-     system("cls||clear");
-    printf("\n\n\n\n\n\n");
-    printf("\n\n");
-    for(i=0; i <= 5; i++) {
-        delay(30);
-         system("cls||clear");
-        for(j=0; j<=i; j++) {
-            printf("\n");
-        }
-        type_logo();
-        printf("\n");
-        speed_logo();
-    }
-    delay(600);
-    printf("\n\n");
-    printf("\t\t\t\tStarting Game");
-    printf("\n");
-    loading_screen();
-    delay(600);
-    printf("\n\n\nPress any key to continue....");
-    getch();
-}
-
-
-void show_instructions() {
-    system("cls||clear");
-    printf("\n\n\n\n [1] Type the WORDS displayed as fast as possible and with minimum mistakes to yeild maximum score.\n\n");
-    printf("[2] If the user types the given word within 15 second, they are granted with +5 points else +4 points.\n\n");
-    printf("[3]Each mistake reduces the life by 1. User has only 5 lifes available to complete whole game.\n\n");
-    printf("[4] Each level starts with a 0 score.");
-    getch();
-}
-
-
-void game_menu() {
-	int chosen = 1;
-	system(YELLOW_COLOR);
-
-	char options[] = "\t\t\t       \20  1. Start Game\n\t\t\t          2. Instructions\n\t\t\t          3. Quit\n\n Please Choose Your Option";
-	char *chosen_one = "\t\t\t        \20 1. Start Game\n\t\t\t          2. Instructions\n\t\t\t          3. Quit\n\n Please Choose Your Option";
-	char *chosen_two = "\t\t\t          1. Start Game\n\t\t\t        \20 2. Instructions\n\t\t\t          3. Quit\n\n Please Choose Your Option";
-	char *chosen_three = "\t\t\t          1. Start Game\n\t\t\t          2. Instructions\n\t\t\t        \20 3. Quit\n\n Please Choose Your Option";
-	char pressed_key;
-	do {
-		system("cls||clear");
-		typespeed_logo();
-		printf("\n\n\n\n");
-	 	printf("\t\t\t       Menu:\n%s",options);
-		pressed_key = getch();
-		if (pressed_key == DOWN_ARROW && chosen == 1) {
-	  		strcpy(options, chosen_two);
-	   		chosen = 2;
-		} else if (pressed_key == DOWN_ARROW && chosen == 2) {
-			strcpy(options, chosen_three);
-			chosen = 3;
-		} else if (pressed_key == DOWN_ARROW && chosen == 3) {
-	    	strcpy(options, chosen_one);
-	    	chosen = 1;
-	 	} else if (pressed_key == UP_ARROW && chosen == 1) {
-	  		strcpy(options, chosen_three);
-	    	chosen = 3;
-	  	} else if (pressed_key == UP_ARROW && chosen == 2) {
-	    	strcpy(options, chosen_one);
-	    	chosen = 1;
-	  	} else if (pressed_key == UP_ARROW && chosen == 3) {
-	    	strcpy(options, chosen_two);
-	    	chosen = 2;
-	  	}
-		delay(50);
-	} while (pressed_key != ENTER);
-
-    switch(chosen) {
-		case 1: game(INITIAL_LEVEL);
-    		    break;
-		case 2: show_instructions();
-				game_menu();
-        		break;
-		case 3: system("cls||clear");
-    		    printf("T h a n k  Y o u.");
-    		    break;
+void stat()    
+{
+	if(difftime(t4,t3)>(frequency))
+	{
+		t3=t4;
+		rate=words/(((double)(t4-t0)/1000)/60);
 	}
 }
 
 
-void advance_level(int level) {
-    system("cls||clear");
-    system(GREEN_COLOR);
-    printf("\n%*s%d%s\n\n\n",35,"L E V E L   " , level + 1,"   C O M P L E T E");
-    end_time = clock() / 1000 - start_time;
-    printf("%*s %ds\n\n", 43, "Time Taken:", end_time);
-    printf("%*s %d %c\n", 43, "Total Score:", total_score, GEM_SYMBOL);
-    printf("\n\n%*s\n%*s",47,"UPGRADING LEVEL.....",38," ");
-	delay(2000);
-    system(DARK_GRAY);
-    level++;
-    if (level < MAX_LEVEL) {
-    	game(level);
-    } else {
-    	system("cls||clear");
-    	system(YELLOW_COLOR);
-    	if((fptr = fopen(CONGRATS_ASCII,"r")) == NULL) {
-     		fprintf(stderr,"error opening %s\n",CONGRATS_ASCII);
-     		return 1;
-     	}
-     	display_ascii(fptr);
-     	fclose(fptr);
-     	printf("\n\n%*s%d", 40, "Score: ", total_score);
-     	exit(0);
-    }
+void read(int read)    
+{
+	int i,j;
+	int index=0;
+	int length;
+	if(read==0x011B)
+		{
+		fail=1;
+		return;
+		}
+	read%=256;
+	for(i=1;i<17;i++)
+	{
+		if(wordlib[i].y>wordlib[i-1].y)
+			index=i;
+	}
+	if(read==(int)*(wordlib[index].s+wordlib[index].correct))
+		{
+		wordlib[index].correct++;
+		letters++;
+		}
+	if(wordlib[index].correct==wordlib[index].length)
+	{
+		words++;
+		wordclear(index);
+		wordlib[index].y-=34;
+		wordlib[index].x=xproduce();
+		wordlib[index].correct=0;
+		wordlib[index].s=wordproduce();
+		wordlib[index].length=strlen(wordlib[index].s);
+	}
+
+
 }
 
 
-int game(int level) {
-    
-    int i, j = 0, k, score = 0;
-    int start_time = clock() / 1000; 
-    int b[MAX_WORDS];
-    char c;
-    char word[MAX_LENGTH];
-    srand(time(NULL));
-    
-    system(DARK_GRAY);
-    while (score < GOAL[level] && lives_left > 0) {
-        int p = 0;
-        int index = rand() % 26 + 1;
-        int screen_position = rand() % 1300 / 20;
-        for (k = 0; k < j; k++) {
-            if (index != b[k])
-                p++;
-        }
-        if (p == j) {
-            strcpy(word, WORDS[level][index]);
-            b[j] = index;
-            for (i = 0; word[i] != '\0'; i++) {
-                if (lives_left == 0) break;
-                system ("cls");
-                printf("Level %d: Collect %d %c gems\n", level+1, GOAL[level], GEM_SYMBOL);
-                printf("%*s", 70, "Lives:");
-                for (k=0; k < lives_left; k++)
-                	printf("%c", HEART_SYMBOL);
-                printf("\n%*s%d %c\n\n\r",70,"Gems:", score, GEM_SYMBOL);
-                printf("%*s",screen_position, word);
-                 c = getch();
+void initword()    
+{
+	int i;
+	for(i=0;i<17;i++)
+	{
+		wordlib[i].x=xproduce();
+		wordlib[i].y=3-2*i;
+		wordlib[i].s=wordproduce();
+		wordlib[i].length=strlen(wordlib[i].s);
+		wordlib[i].correct=0;
+	}
 
-                if (c == word[i] || c + 32 == word[i]) {
-                    word[i]=' ';
-                    end_time = clock() / 1000 - start_time;
-                    if (end_time <= 15)
-                    	score += 5;
-                    else if (end_time > 15 && end_time <= 25)
-                    	score += 4;
-                    else if (end_time > 25 && end_time <= 60)
-                    	score += 3;
-                    else if (end_time > 60 && end_time <= 120)
-                    	score += 2;
-                    else
-                    	score += 1;
-                    delay(10);
-                } else {
-                    i--;
-                    lives_left--;
-                    if (score >= 5)
-                    	score -= 5;
-                    else if (score > 0)
-                    	score -= 1;
-                   system(RED_COLOR);
-                   delay(200);
-                   system(LIGHT_GRAY);
-                }
-            }
-            j++;
-        }
-    }
-
-    total_score += score;
-    if (lives_left == 0) {
-         system("cls||clear");
-         system(RED_COLOR);
-         if((fptr = fopen(GAMEOVER_ASCII, "r")) == NULL) {
-             fprintf(stderr, "error opening %s\n", GAMEOVER_ASCII);
-             return 1;
-         }
-         display_ascii(fptr);
-         fclose(fptr);
-        printf("\n\n%*s %d", 56, " Y   O   U      S   C   O   R   E   D : ", total_score);
-    } else {
-        advance_level(level);
-        getch();
-    }
-
-    return 0;
 }
 
+void draw()    
+{
+	int i;
+	for(i=0;i<17;i++)
+		{
+			if(yconverter(wordlib[i].y)==-1)
+				continue;
+			else
+				worddraw(i);
 
-int main() {
-    start_screen();
-    game_menu();
-	getch();
-    return 0;
+		}
+}
+
+void worddraw(int i)    
+{
+	int j=0;
+	char *p;
+	while(*(wordlib[i].s+j)!=NULL)
+	{
+		p=_vp+(wordlib[i].y*_width+wordlib[i].x+j)*(_color_bits/8);
+		*p=*(wordlib[i].s+j);
+		if(j<=wordlib[i].correct-1)
+			*(p+1)=GREEN;
+		else
+			*(p+1)=WHITE;
+		j++;
+	}
+}
+
+void wordclear(int i)    
+{
+	int j=0;
+	char *p;
+	while(*(wordlib[i].s+j)!=NULL)
+	{
+		p=_vp+(wordlib[i].y*_width+wordlib[i].x+j)*(_color_bits/8);
+		*p=NULL;
+		*(p+1)=NULL;
+		j++;
+	}
+}
+
+int xproduce()    
+{
+    int x;
+	do
+	{
+		srand(time(NULL)+seed);
+		seed+=7;
+		x=rand()%51;
+	}
+	while (x<6);
+	return x;
+}
+
+int yconverter(int y)    
+{
+	if(y<3)
+		y=-1;
+	else if(y>18)
+		y=0;
+	return y;
+}
+
+char* wordproduce()    
+{
+	int i,length,character;
+	char *s;
+	do
+	{
+		srand(time(NULL)+seed);
+		length=rand()%11;
+		seed+=7;
+		
+	}
+	while (length==0||length>10);
+
+	if((s=(char*)malloc(sizeof(char)*(length+1)))==NULL)
+		exit(0);
+
+	for(i=0;i<length;i++){
+		do
+		{
+			srand(time(NULL)+seed);
+			character=rand()%27;
+			seed+=7;
+		}
+		while (character==0);
+		*(s+i)=(char)(character+96);
+	}
+	*(s+i)=NULL;
+	return s;
+}
+
+void information()    
+{
+	int x,y;
+	char *s1="Letters:";
+	char *s2="Words";
+	char *s3="Type rate:";
+	char *s4="words/min";
+	char *s5="Press Esc to";
+	char *s6=" exit.";
+
+	wordprint(s5,62,3);
+	wordprint(s6,62,4);
+	wordprint(s1,62,6);
+	numberprint(letters,70,8);
+	wordprint(s2,62,10);
+	numberprint(words,70,12);
+	wordprint(s3,62,14);
+	numberprint((int)rate,70,16);
+	wordprint(s4,62,18);
+
+}
+
+void wordprint(char* s,int x,int y)   
+{ 
+	char *p;
+
+	int count=0;
+	int i;
+	while(*s!=NULL)
+	{
+		s++;
+		count++;
+	}
+	s-=count;
+	for(i=0;i<count;i++){
+		p=_vp+(y*_width+x+i)*(_color_bits/8);
+		*p=*(s+i);
+		*(p+1)=YELLOW;
+	}
+	
+}
+
+void numberprint(int n,int x,int y)    
+{
+	char* p;
+	int count=0;
+	int number=n;
+	int i;
+	while(number!=0)
+	{
+		count++;
+		number/=10;
+	}
+	for(i=0;i<count;i++)
+	{
+		p=_vp+(y*_width+(x-i))*(_color_bits/8);
+		*p=(char)(n%10+48);
+		*(p+1)=YELLOW;
+		n/=10;
+	}
+}
+
+void score()
+{
+	char *s1="Your score:";
+}
+
+void gameover(){    
+   char *s1="GAME OVER!";
+   char *s2="Your score:";
+   char *s3="words";
+   char *s4="letters";
+   char *s5="words per miniute";
+   
+   free_midi(pmidi);
+   closesound();
+   clrscr();
+   
+   wordprint(s1,30,6);
+   wordprint(s2,20,8);
+   numberprint(words,24,10);
+   wordprint(s3,30,10);
+   numberprint(letters,24,12);
+   wordprint(s4,30,12);
+   numberprint(rate,24,14);
+   wordprint(s5,30,14);
+   getch();
+   clrscr();
 }
