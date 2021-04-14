@@ -1,27 +1,6 @@
 # L-AND-T_mini-project
 
 
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li> 
-      <a href="#How To Play">How To Play</a>
-    </li>
-    <li> 
-      <a href="#Images">Images</a>
-    </li> 
-      
-  
-     
-</details>
-
 
 
 <!-- ABOUT THE PROJECT -->
@@ -49,6 +28,12 @@ This section should list any major frameworks that you built your project using.
 ## Images
 <p align="center">
   <img src="https://github.com/SarthakVerma26/L-AND-T_mini-project/blob/main/4_images/img1.png">
+</p>
+<p align="center">
+  <img src="https://github.com/SarthakVerma26/L-AND-T_mini-project/blob/main/4_images/img2.png">
+</p>
+<p align="center">
+  <img src="https://github.com/SarthakVerma26/L-AND-T_mini-project/blob/main/4_images/img3.png">
 </p>
 
 
